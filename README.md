@@ -8,6 +8,7 @@
 	- pywin32
 	- xlwings
 	- pandas
+	- python-docx
 
 <div style="page-break-after: always;"></div>
 

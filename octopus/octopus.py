@@ -4,6 +4,8 @@ from anytree.exporter import DotExporter
 # from anytree.dotexport import RenderTreeGraph
 import win32api         # for message box
 import pandas as pd
+from docx import Document
+from docx.shared import Inches
 from input import *
 
 
@@ -39,10 +41,15 @@ def main():
         n23 = Node(str(df_main.iloc[index_no_list[0], 4]), parent=n1)
         n24 = Node(str(df_main.iloc[index_no_list[0], 5]), parent=n1)
         
-        DotExporter(root).to_dotfile("octopus.dot")    # create the dot file for image creation using Graphviz
+        # DotExporter(root).to_dotfile("octopus.dot")    # create the dot file for image creation using Graphviz
         DotExporter(root).to_picture("octopus.png")
 
         # RenderTreeGraph(root).to_picture("octopus.png")    # create the png file using dot file
+
+        # ---------------------------Generate Document------------------------------------------------ 
+        document = Document()
+        document.add_picture('octopus.png')
+        document.save('octopus.docx')
     
     else:               # if the root entry is NOT found
         win32api.MessageBox(wb.app.hwnd, "SORRY! the entered root no. is not found. \nPlease try again..", "Root no. NOT found")
