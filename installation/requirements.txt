@@ -1,0 +1,4 @@
+pandas==0.25.1
+pywin32==224
+xlwings==0.16.0
+anytree==2.7.2

@@ -1,7 +1,7 @@
 import xlwings as xw
 from anytree import Node, RenderTree
 from anytree.exporter import DotExporter
-from anytree.dotexport import RenderTreeGraph
+# from anytree.dotexport import RenderTreeGraph
 import win32api         # for message box
 import pandas as pd
 from input import *
@@ -40,8 +40,9 @@ def main():
         n24 = Node(str(df_main.iloc[index_no_list[0], 5]), parent=n1)
         
         DotExporter(root).to_dotfile("octopus.dot")    # create the dot file for image creation using Graphviz
+        DotExporter(root).to_picture("octopus.png")
 
-        RenderTreeGraph(root).to_picture("octopus.png")    # create the png file using dot file
+        # RenderTreeGraph(root).to_picture("octopus.png")    # create the png file using dot file
     
     else:               # if the root entry is NOT found
         win32api.MessageBox(wb.app.hwnd, "SORRY! the entered root no. is not found. \nPlease try again..", "Root no. NOT found")
